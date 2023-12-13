@@ -44,18 +44,26 @@ function App() {
         .toLowerCase()
         .includes(searchValue.toLowerCase())
     )
+  
+  const saveTodos = (newTodos) => {
+    const stringifiedTodos = JSON.stringify(newTodos)
+    localStorage.setItem('todos', stringifiedTodos)
+    setTodos(newTodos)
+  }
 
   const competeTodos = (text) => {
     const newTodos = [...todos]
     const todoIndex = newTodos.findIndex(todo => todo.text === text)
     newTodos[todoIndex].completed = true
     setTodos(newTodos)
+    saveTodos(newTodos)
   }
 
   const deleteTodos = (text) => {
     const newTodos = [...todos]
     const filterTodo = newTodos.filter(todo => todo.text !== text)
     setTodos(filterTodo)
+    saveTodos(filterTodo)
   }
 
 
