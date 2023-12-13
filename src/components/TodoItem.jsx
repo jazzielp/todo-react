@@ -1,9 +1,13 @@
 import PropTypes from 'prop-types'
 import '../assets/css/TodoItem.css'
+import { FaCheckCircle } from "react-icons/fa"
+
+
 function TodoItem({ text, completed, onComplete, onDelete}) {
     return (
         <li className='TodoItem'>
-            <span onClick={() => onComplete(text)} className={`Icon Icon-check ${completed && "Icon-check--active"}`}>V</span>
+            {/* <span onClick={() => onComplete(text)} className={`Icon Icon-check ${completed && "Icon-check--active"}`}>V</span> */}
+            <FaCheckCircle onClick={() => onComplete(text)} className={`Icon Icon-check ${completed && "Icon-check--active"}`} />
             <p className={`TodoItem-p ${completed && "TodoItem-p--complete"}`}>{text}</p>
             <span onClick={() => onDelete(text)} className="Icon Icon-delete">X</span>
         </li>

@@ -25,8 +25,14 @@ function App() {
     },
   ]
 
+  if (!localStorage.getItem('todos')) {
+    localStorage.setItem('todos', JSON.stringify(TODOS_LIST))
+  } 
+
+  let todosLocalStorage = JSON.parse(localStorage.getItem('todos'))
+
   const [searchValue, setSearchValue] = useState('')
-  const [todos, setTodos] = useState(TODOS_LIST)
+  const [todos, setTodos] = useState(todosLocalStorage)
 
   const completedTodos = todos
     .filter(todo => todo.completed === true).length
