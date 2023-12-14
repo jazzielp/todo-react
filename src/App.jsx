@@ -25,11 +25,9 @@ const TODOS_LIST = [
 ]
 
 function App() {
-
-
-  
- 
   const [saveTodos, todos] = UseLocalStorage('todos', TODOS_LIST)
+  console.log('Entra a la apps')
+
   const [
     totalTodos,
     completedTodos,
@@ -44,19 +42,23 @@ function App() {
     <>
       <TodoCounter total={totalTodos} completed={completedTodos} />
       <TodoSearch setSearchValue={setSearchValue} searchValue={searchValue} />
-      <TodoList>
-        {
-          searchedTodos.map(todo => (
-            <TodoItem
-              key={todo.id}
-              text={todo.text}
-              completed={todo.completed}
-              onComplete={competeTodos}
-              onDelete={deleteTodos}
-            />
-          ))
-        }
-      </TodoList>
+      {todos.length === 0
+        ? <p>Crea tu primer TODO</p>
+        : <TodoList>
+          {
+            searchedTodos.map(todo => (
+              <TodoItem
+                key={todo.id}
+                text={todo.text}
+                completed={todo.completed}
+                onComplete={competeTodos}
+                onDelete={deleteTodos}
+              />
+            ))
+          }
+        </TodoList>
+      }
+
       <CreateTodoButton />
     </>
   )

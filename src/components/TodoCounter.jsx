@@ -1,6 +1,8 @@
 import PropTypes from 'prop-types'
 import '../assets/css/TodoCounter.css'
 function TodoCounter({ total, completed }) {
+  console.log('Entra a TodoCounter')
+
     return (
 
         total === completed

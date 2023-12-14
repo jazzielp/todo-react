@@ -1,6 +1,7 @@
 import '../assets/css/TodoSearch.css'
 import PropTypes from 'prop-types'
 function TodoSearch({ setSearchValue, searchValue}) {
+  console.log('Entra a TodoSearch')
 
     const handlechange = (e) => {
         setSearchValue(e.target.value)
